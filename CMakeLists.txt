@@ -43,7 +43,9 @@ endif()
 
 find_package(OpenMP REQUIRED)
 find_package(MPI)
-find_package(OpenCL 2.0)
+if (CMAKE_CUDA_COMPILER)
+  find_package(OpenCL 2.0)
+endif ()
 
 option(BRICK_USE_MEMFD "Using memfd instead of shm_open, supported on Linux >= 3.17 with \"CONFIG_MEMFD_CREATE\"" OFF)
 if (BRICK_USE_MEMFD)
